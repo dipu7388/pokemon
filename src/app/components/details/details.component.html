@@ -1,5 +1,5 @@
 <div class="wrapper" *ngIf="pokemon">
-  <mat-card>
+  <div>
     <a [routerLink]="['/detail', pokemon?.id - 1]">
       <mat-icon
         aria-hidden="false"
@@ -12,94 +12,94 @@
       >
     </a>
 
-    <mat-card-content fxFlex fxLayout="column">
+    <div fxFlex fxLayout="column" class="card" *ngIf="pokemon">
       <h1 style="text-align: center">
         Pokemon Name: <span class="name"> {{ pokemon?.name }}</span>
       </h1>
 
-      <div fxLayout="row wrap" class="imgParent" fxLayoutGap="24px">
+      <div fxLayout="row wrap" class="imgParent divider" fxLayoutGap="24px">
         <img fxFlex [src]="pokemon?.sprites?.back_shiny" />
         <img fxFlex [src]="pokemon?.sprites?.front_default" />
         <img fxFlex [src]="pokemon?.sprites?.front_shiny" />
         <img fxFlex [src]="pokemon?.sprites?.back_default" />
       </div>
-      <div fxLayout="row wrap ">
+      <div fxLayout="row wrap " class="divider">
         <span class="title"> abilities: </span>
 
-        <mat-chip-list
+        <div
           class="chiplist"
           cdkDropList
           cdkDropListOrientation="horizontal"
+          [@listAnimation]="showAnim"
         >
-          <mat-chip
+          <div
             class="chipbox"
             cdkDrag
             *ngFor="let ability of pokemon?.abilities"
           >
             {{ ability?.ability?.name }}
-          </mat-chip>
-        </mat-chip-list>
+          </div>
+        </div>
       </div>
 
-      <p>
+      <p class="divider">
         <span class="title"> Base Experience: </span>
         {{ pokemon?.base_experience }}
       </p>
 
-      <div fxLayout="row wrap ">
+      <div fxLayout="row wrap " class="divider">
         <span class="title"> Forms: </span>
 
-        <mat-chip-list
+        <div
           class="chiplist"
           cdkDropList
           cdkDropListOrientation="horizontal"
+          [@listAnimation]="showAnim"
         >
-          <mat-chip class="chipbox" cdkDrag *ngFor="let form of pokemon?.forms">
+          <div class="chipbox" cdkDrag *ngFor="let form of pokemon?.forms">
             {{ form?.name }}
-          </mat-chip>
-        </mat-chip-list>
+          </div>
+        </div>
       </div>
-      <div fxLayout="row wrap ">
+      <div fxLayout="row wrap " class="divider">
         <span class="title"> Game Indices: </span>
 
-        <mat-chip-list
+        <div
           class="chiplist"
           cdkDropList
           cdkDropListOrientation="horizontal"
+          [@listAnimation]="showAnim"
         >
-          <mat-chip
-            class="chipbox"
-            cdkDrag
-            *ngFor="let gi of pokemon?.game_indices"
-          >
+          <div class="chipbox" cdkDrag *ngFor="let gi of pokemon?.game_indices">
             Game Index: {{ gi?.game_index }}, Name: {{ gi?.version?.name }}
-          </mat-chip>
-        </mat-chip-list>
+          </div>
+        </div>
       </div>
 
-      <p>
+      <p class="divider">
         <span class="title"> Height: </span>
         {{ pokemon?.height }}
       </p>
-      <p>
+      <p class="divider">
         <span class="title"> Moves Length: </span>
         {{ pokemon?.moves?.length }}
       </p>
 
-      <div fxLayout="row wrap ">
+      <div fxLayout="row wrap " class="divider">
         <span class="title"> Types: </span>
 
-        <mat-chip-list
+        <div
           class="chiplist"
           cdkDropList
           cdkDropListOrientation="horizontal"
+          [@listAnimation]="showAnim"
         >
-          <mat-chip class="chipbox" cdkDrag *ngFor="let type of pokemon?.types">
+          <div class="chipbox" cdkDrag *ngFor="let type of pokemon?.types">
             Name: {{ type?.type?.name }}, Slot: {{ type?.slot }}
-          </mat-chip>
-        </mat-chip-list>
+          </div>
+        </div>
       </div>
-    </mat-card-content>
+    </div>
     <a [routerLink]="['/detail', pokemon?.id + 1]">
       <mat-icon
         aria-hidden="false"
@@ -111,7 +111,7 @@
         >keyboard_arrow_right</mat-icon
       >
     </a>
-  </mat-card>
+  </div>
 </div>
 <div class="loader" *ngIf="loading">
   <mat-spinner></mat-spinner>

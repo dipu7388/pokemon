@@ -4,19 +4,20 @@
   fxLayout="row wrap "
   fxLayoutAlign="space-around"
   (scroll)="fetchMoreData(nextUrl, $event)"
+  [@listAnimation]="loading"
 >
   <a
     [routerLink]="['/detail', pokemon?.id]"
     *ngFor="let pokemon of pokemonList"
   >
-    <mat-card class="card" fxLayout="column" fxFlexOffset="24px">
-      <mat-card-content fxFlex fxLayoutAlign="center center">
+    <div class="card" fxLayout="column" fxFlexOffset="24px">
+      <div fxFlex fxLayoutAlign="center center">
         <h1 style="text-align: center">Pokemon Name: {{ pokemon?.name }}</h1>
-      </mat-card-content>
-      <mat-card-actions fxFlex="40px">
-        <button mat-button>View</button>
-      </mat-card-actions>
-    </mat-card>
+      </div>
+      <div fxFlex="40px">
+        <button>View</button>
+      </div>
+    </div>
   </a>
 </section>
 

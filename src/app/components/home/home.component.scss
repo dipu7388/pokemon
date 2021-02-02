@@ -2,22 +2,24 @@
 @import 'src/sass/mixins';
 @import 'src/sass/grid';
 @import 'src/sass/theme';
-
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
-.card {
-  width: 320px;
-  height: 400px;
-  margin-top: 24px;
-  &:hover{
-    background-color: mat-color($primary);
-    color: white;
-    a{
-      color: #fff;
-    }
-  }
-}
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+.card{
+   width: 320px;
+   height: 400px;
+   margin-top: 24px;
+   &:hover {
+     background-color: mat-color($accent, text);
+     color: #fff;
+     ;
 
+     a {
+       color: #fff;
+     }
+   }
+}
 
 
 

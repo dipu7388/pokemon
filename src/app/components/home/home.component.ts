@@ -1,3 +1,4 @@
+import { trigger, transition, query, stagger, animate, style } from '@angular/animations';
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from "@angular/core";
 import { HttpService } from 'src/app/services/http.service';
@@ -7,7 +8,22 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: "dk-home",
   templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.scss"]
+  styleUrls: ["./home.component.scss"],
+  animations: [trigger('listAnimation', [
+  transition('* => *', [
+    query(':leave', [
+      stagger(100, [
+        animate('0.5s', style({ opacity: 0 }))
+      ])
+    ],{optional: true}),
+    query(':enter', [
+      style({ opacity: 0 }),
+      stagger(100, [
+        animate('2s', style({ opacity: 1 }))
+      ])
+    ],{optional: true})
+  ])
+])]
 })
 export class HomeComponent implements OnInit {
   constructor(
